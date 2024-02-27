@@ -10,7 +10,21 @@ public class Alarms
 {
 	public int countAlarms(int[] volume, int S)
 	{
-        return default(int);
+		int counter = 0;
+		while(S > 0)
+		{		
+			S = S - volume[0];
+			int tmp =volume[0];
+        	for (int i = 0; volume.Length - 1 > i; ++i)
+			{
+				volume[i] = volume[i+1];
+			}		
+		
+			volume[volume.Length -1] = tmp;
+			counter = counter + 1;
+	
+		}
+		return counter;
 	}
 
 	#region Testing code
