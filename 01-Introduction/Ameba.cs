@@ -10,7 +10,17 @@ public class Ameba
 {
 	public int simulate(int[] X, int A)
 	{
-	    return default(int);
+		
+		for (int i = 0; X.Length > i; ++i)
+		{
+			if (X[i] == A)
+			{
+				A = A + X[i];
+			}		
+			
+		}
+			
+	    return A;
 	}
 
 	#region Testing code
