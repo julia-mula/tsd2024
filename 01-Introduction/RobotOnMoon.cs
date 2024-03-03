@@ -11,7 +11,67 @@ public class RobotOnMoon
 {
     public string isSafeCommand(string[] board, string S)
     {
-        return default(string);
+		int curr_i = -1;
+		int curr_j = -1;
+		int width = board[0].Length;
+		int height = board.Length;
+        for (int i = 0; height > i; ++i)
+			for (int j = 0; width > j; ++j)
+				if (board[i][j] == 'S')
+				{
+					curr_i = i;
+					curr_j = j;
+					break;
+				}
+		
+		for (int a = 0; S.Length > a; ++a)
+		{
+			char move = S[a];
+			switch (move)
+			{
+				case 'U':
+					if (curr_i <= 0)
+					{
+						return "Dead";
+					}
+					else if (board[curr_i-1][curr_j] == '.')
+					{
+						curr_i = curr_i - 1;	
+					}
+					break;
+				case 'D':
+					if (curr_i >= height - 1)
+					{
+						return "Dead";
+					}
+					else if (board[curr_i+1][curr_j] == '.')
+					{
+						curr_i = curr_i + 1;
+					}
+					break;
+				case 'L':
+					if (curr_j <= 0)
+					{
+						return "Dead";
+					}
+					else if (board[curr_i][curr_j-1] == '.')
+					{
+						curr_j = curr_j - 1;
+					}
+					break;
+				case 'R':
+					if (curr_j >= width - 1)
+					{
+						return "Dead";
+					}
+					else if (board[curr_i][curr_j+1] == '.')
+					{
+						curr_j = curr_j + 1;
+					}
+					break;
+			}
+		}
+		return "Alive";
     }
 
     #region Testing code
